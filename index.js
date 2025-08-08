@@ -1,0 +1,28 @@
+const express = require("express");
+const cors = require("cors");
+const { connection } = require("./config/db");
+require("dotenv").config();
+const { userRouter } = require("./routes/user.routes");
+
+const app = express();
+
+// Middlewares
+app.use(cors());
+app.use(express.json());
+
+app.use("/user", userRouter);
+
+// Test route
+app.get("/", (req, res) => {
+  res.send("Scentara E-commerce API is running...");
+});
+
+// Start server
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, async () => {
+  try {
+    await connection;
+    console.log("Connected to DB");
+  } catch (error) {}
+  console.log("Server is listening");
+});
