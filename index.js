@@ -7,6 +7,7 @@ const { productRouter } = require("./routes/product.routes");
 const { reviewRouter } = require("./routes/review.routes");
 const { cartRouter } = require("./routes/cart.routes");
 const { wishlistRouter } = require("./routes/wishlist.route");
+const { orderRouter } = require("./routes/order.route");
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use("/review", reviewRouter);
 app.use("/cart", cartRouter);
 
 app.use("/wishlist", wishlistRouter);
+app.use("/order", orderRouter);
 
 // Test route
 app.get("/", (req, res) => {
