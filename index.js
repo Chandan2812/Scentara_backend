@@ -3,6 +3,10 @@ const cors = require("cors");
 const { connection } = require("./config/db");
 require("dotenv").config();
 const { userRouter } = require("./routes/user.routes");
+const { productRouter } = require("./routes/product.routes");
+const { reviewRouter } = require("./routes/review.routes");
+const { cartRouter } = require("./routes/cart.routes");
+const { wishlistRouter } = require("./routes/wishlist.route");
 
 const app = express();
 
@@ -11,6 +15,12 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/user", userRouter);
+app.use("/products", productRouter);
+
+app.use("/review", reviewRouter);
+app.use("/cart", cartRouter);
+
+app.use("/wishlist", wishlistRouter);
 
 // Test route
 app.get("/", (req, res) => {
